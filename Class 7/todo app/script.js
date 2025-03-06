@@ -1,21 +1,45 @@
 var todos = []
-function addTodo(){
-    let todo = document.getElementById('newTodo').value
-    if (todo){
-        let newTodo = document.createElement('p')
-        newTodo.innerText = todo
-        newTodo.classList.add('todo')
-        document.getElementById('todos').appendChild(newTodo)
+var nextId = todos.length
+function* idGenerator() {
+    yield nextId++
 
-        todos.push(newTodo)
+}
+function done(todoId) {
+    document.getElementById(todoId).classList.add('done')
+    document.getElementById(todoId).sin
+}
+function del(todoId){
+    document.getElementById(todoId).remove()
+}
+function prepareTodoDiv(todo) {
+    
+    let _id = idGenerator().next().value
+    let newTodo = `
+        <div id = '${_id}' class = 'todo'>
+            <p>${todo}</p>
+            <button class = 'doneBtn' onclick = 'done(${_id})'>Done</button>
+            <button class = 'delBtn' onclick = 'del(${_id})'>Delete</button>
+        </div>
+    `
+    return newTodo
+}
+
+
+function addTodo() {
+    let todo = document.getElementById('newTodo').value
+    if (todo) {
+        document.getElementById('todos').innerHTML+= prepareTodoDiv(todo)
+        todos.push(todo)
         document.getElementById('newTodo').value = ''
 
     }
 }
-document.getElementById('main').addEventListener('submit',(event)=>{
-    event.preventDefalt()
-    addTodo()
+document.getElementById('newTodo').addEventListener('keydown', ({ key }) => {
+    console.log('debug')
+    if (key == 'Enter') {
+        addTodo()
+    }
 })
 
 
-document.getElementById('addBtn').addEventListener('click',addTodo)
+document.getElementById('addBtn').addEventListener('click', addTodo)
