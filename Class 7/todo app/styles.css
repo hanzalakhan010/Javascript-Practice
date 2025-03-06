@@ -2,7 +2,7 @@
   font-family: "Courier New", Courier, monospace;
 }
 body {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +45,7 @@ div.todo {
   border-radius: 4px;
   width: 400px;
   padding: 10px;
-  background-color: rgb(255, 178, 178);
+  background-color: rgb(218, 211, 211);
   margin: 2px;
 }
 .doneBtn {
@@ -58,28 +58,37 @@ div.todo {
 div.done {
   background-color: rgb(187, 209, 187);
 }
-.tag {
+div.done p {
+  text-decoration: line-through;
+}
+.tag,.todoTag {
   border-radius: 5px;
   padding: 5px;
   margin-left: 5px;
   margin-right: 5px;
   background-color: beige;
 }
-.tag:hover{
-    background-color:rgb(243, 243, 163) ;
+.tag:hover {
+  background-color: rgb(243, 243, 163);
+  cursor: pointer;
 }
 
-.tag.selected:nth-child(4n + 1) {
+.tag.selected:nth-child(4n + 1) ,.todoTag:nth-child(4n + 1) {
   background-color: rgb(162, 95, 224);
 }
 
-.tag.selected:nth-child(4n + 2) {
+.tag.selected:nth-child(4n + 2),.todoTag:nth-child(4n + 2) {
   background-color: gold;
 }
 
-.tag.selected:nth-child(4n + 3) {
+.tag.selected:nth-child(4n + 3),.todoTag:nth-child(4n + 3) {
   background-color: chocolate;
 }
-.tag.selected:nth-child(4n) {
+.tag.selected:nth-child(4n),.todoTag:nth-child(4n) {
   background-color: darkkhaki;
+}
+#todos{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
