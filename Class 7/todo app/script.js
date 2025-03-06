@@ -12,4 +12,6 @@ function addTodo(){
 
     }
 }
+document.getElementById('main').addEventLi
+
 document.getElementById('addBtn').addEventListener('click',addTodo)
