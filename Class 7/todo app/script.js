@@ -6,13 +6,13 @@ function* idGenerator() {
 }
 function done(todoId) {
     document.getElementById(todoId).classList.add('done')
-    document.getElementById(todoId).sin
+    document.getElementById(todoId).childNodes[1].style.textDecoration = 'line-through'
+    // document.getElementById(todoId).sin
 }
 function del(todoId){
     document.getElementById(todoId).remove()
 }
 function prepareTodoDiv(todo) {
-    
     let _id = idGenerator().next().value
     let newTodo = `
         <div id = '${_id}' class = 'todo'>
@@ -29,17 +29,18 @@ function addTodo() {
     let todo = document.getElementById('newTodo').value
     if (todo) {
         document.getElementById('todos').innerHTML+= prepareTodoDiv(todo)
-        todos.push(todo)
+        todos.push({id:nextId,todo})
+        console.log(todos)
         document.getElementById('newTodo').value = ''
 
     }
 }
 document.getElementById('newTodo').addEventListener('keydown', ({ key }) => {
-    console.log('debug')
     if (key == 'Enter') {
         addTodo()
     }
 })
 
+document.querySelectorAll('tag').forEach(()=>{})
 
 document.getElementById('addBtn').addEventListener('click', addTodo)

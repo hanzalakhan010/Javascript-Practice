@@ -1,57 +1,85 @@
-*{
-    font-family: 'Courier New', Courier, monospace;
+* {
+  font-family: "Courier New", Courier, monospace;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
 }
-#main input, #main button{
-    font-size: x-large;
-    /* padding-right: 10px;
+#main input,
+#main button {
+  font-size: x-large;
+  /* padding-right: 10px;
     padding-left: 10px; */
-    padding: 15px;
-    
+  padding: 15px;
 }
-#main input{
-    outline: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-#main button{
-    background-color: #4fb144;
-    color: white;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+#main input {
+  outline: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 90%;
 }
 
-#main{
-    /* gap: 10px; */
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
+#main button {
+  background-color: #4fb144;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-div.todo{
-    border-radius: 4px;
-    width: 400px;
-    padding: 10px;
-    background-color: rgb(255, 178, 178);
-    margin:2px
-}
-.doneBtn{
-    background-color: 4fb144;
+#main {
+  /* gap: 10px; */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
-
-.delBtn{
-    background-color: rgb(255, 102, 102);
+div.todo {
+  border-radius: 4px;
+  width: 400px;
+  padding: 10px;
+  background-color: rgb(255, 178, 178);
+  margin: 2px;
 }
-div.done{
-    background-color: rgb(187, 209, 187);
+.doneBtn {
+  background-color: #4fb144;
+}
+
+.delBtn {
+  background-color: rgb(255, 102, 102);
+}
+div.done {
+  background-color: rgb(187, 209, 187);
+}
+.tag {
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: beige;
+}
+.tag:hover{
+    background-color:rgb(243, 243, 163) ;
+}
+
+.tag.selected:nth-child(4n + 1) {
+  background-color: rgb(162, 95, 224);
+}
+
+.tag.selected:nth-child(4n + 2) {
+  background-color: gold;
+}
+
+.tag.selected:nth-child(4n + 3) {
+  background-color: chocolate;
+}
+.tag.selected:nth-child(4n) {
+  background-color: darkkhaki;
 }
