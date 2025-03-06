@@ -12,6 +12,10 @@ function addTodo(){
 
     }
 }
-document.getElementById('main').addEventLi
+document.getElementById('main').addEventListener('submit',(event)=>{
+    event.preventDefalt()
+    addTodo()
+})
+
 
 document.getElementById('addBtn').addEventListener('click',addTodo)
