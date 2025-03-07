@@ -3,10 +3,10 @@
 }
 body {
   /* height: 100vh; */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 h1 {
   text-align: center;
@@ -42,11 +42,13 @@ h1 {
 }
 
 div.todo {
+  display: inline-block;
   border-radius: 4px;
   width: 400px;
   padding: 10px;
   background-color: rgb(218, 211, 211);
   margin: 2px;
+  height: fit-content;
 }
 .doneBtn {
   background-color: #4fb144;
@@ -61,10 +63,16 @@ div.done {
 div.done p {
   text-decoration: line-through;
 }
+
+div.todo p {
+  width: 100%;
+  word-wrap: break-word;
+  text-align: justify;
+}
 .tag,.todoTag {
   border-radius: 5px;
   padding: 5px;
-  margin-left: 5px;
+  /* margin-left: 5px; */
   margin-right: 5px;
   background-color: beige;
 }
@@ -87,8 +95,20 @@ div.done p {
 .tag.selected:nth-child(4n),.todoTag:nth-child(4n) {
   background-color: darkkhaki;
 }
+.todoTag{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: small;
+}
+.tagsDiv{
+  margin-top: 10px;
+  margin-left: 0px;
+}
 #todos{
   margin: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+  justify-content: center;
+  align-items: center;
+  column-count: 3;
 }

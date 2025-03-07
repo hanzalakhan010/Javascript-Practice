@@ -17,10 +17,10 @@ function loadState() {
   });
 }
 function done(todoId) {
-  document.getElementById(`todoID_${todoId}`).classList.add("done");
-  document.getElementById(`todoID_${todoId}`).children[2].remove();
+  document.getElementById(todoId).classList.add("done");
+  document.getElementById(todoId).children[1].remove();
   for (let todo of todos) {
-    if (todo.id == `todoID_${todoId}`) {
+    if (todo.id == `${todoId}`) {
       todo.status = "done";
       saveState();
       return;
@@ -28,9 +28,9 @@ function done(todoId) {
   }
 }
 function del(todoId) {
-  document.getElementById(`todoID_${todoId}`).remove();
+  document.getElementById(todoId).remove();
   todos.forEach((todo, index) => {
-    if (todo.id == `todoID_${todoId}`) {
+    if (todo.id == todoId) {
       todos.splice(index, 1);
       saveState();
       return;
@@ -46,17 +46,17 @@ function prepareTodoDiv(id, todo, tags, status_) {
     });
   }
   let newTodo = `
-        <div id = 'todoID_${id}' class = 'todo'>
+        <div id = '${id}' class = 'todo'>
+        <p>${todo}</p>
+        ${
+              status_
+                ? ""
+                : `<button class = 'doneBtn' onclick = 'done("${id}")'>Done</button>`
+            }
+            <button class = 'delBtn' onclick = 'del("${id}")'>Delete</button>
             <div class = 'tagsDiv'>
                 ${tagsDiv}
             </div>
-            <p >${todo}</p>
-            ${
-              status_
-                ? ""
-                : `<button class = 'doneBtn' onclick = 'done(${id})'>Done</button>`
-            }
-            <button class = 'delBtn' onclick = 'del(${id})'>Delete</button>
         </div>
         `;
   document.getElementById("todos").innerHTML += newTodo;

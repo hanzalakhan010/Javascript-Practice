@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo app</title>
-    <link rel = "stylesheet" href="styles.css">
-    <script src = 'script.js' defer></script>
-</head>
-<body onload="loadState()">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body onload="loadState()">
     <h1>TO-Do list</h1>
-    <div id = 'main' >
-        <div>
-        </div>
-            <input id="newTodo" spellcheck="false" autocapitalize="false">
-            <button id = 'addBtn'>Add</button>
-        </div>
-        <div id = 'tags'>
-            <span class = "tag">Home</span>            
-            <span class = "tag">Work</span>            
-            <span class = "tag">Family</span>            
-            <span class = "tag">Weekend</span>            
-        </div>
-    <div id = 'todos'></div>
-</body>
+    <div style="display: none;">
 
+            <div id="main">
+            <input id="newTodo" spellcheck="false" autocapitalize="false" />
+            <button id="addBtn">Add</button>
+            </div>
+            <div id="tags">
+            <span class="tag">Home</span>
+            <span class="tag">Work</span>
+            <span class="tag">Family</span>
+            <span class="tag">Weekend</span>
+            </div>
+    </div>
+    <div id="todos"></div>
+  </body>
 </html>
