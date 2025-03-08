@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Simple Finance</title>
+  </head>
+  <body>
+    <header>
+      <h2>Simple Finance</h2>
+      <p id="date">Date</p>
+      <p id="balance">Balance</p>
+    </header>
+    <section id="dashboard">
+      <div id="income">
+        <p>Income this Month</p>
+      </div>
+      <div id="expense">
+        <p>Expenses this Month</p>
+      </div>
+      <div id="savings">
+        <p>Savings</p>
+      </div>
+      <div id="budgetRemaining">
+        <p>Budget Remaining</p>
+      </div>
+    </section>
+    <section id="actions">
+      <div id="transEntry">
+        <p>Add Transaction</p>
+        <span>
+          <input id="transAmount" type="number" placeholder="Amount" min="0" />
+          <select id="transType">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+          <select id="transCategory">
+            <option value="Food">Food</option>
+            <option value="Bills">Bills</option>
+            <option value="Transportaion">Transportaion</option>
+          </select>
+        </span>
+        <span>
+          <input id="transDate" type="date" />
+          <input id="transDescription" placeholder="Description" />
+        </span>
+        <span>
+          <button>Add Transaction</button>
+        </span>
+      </div>
+      <div id="visuals">
+        <p>Spending Analysis</p>
+      </div>
+    </section>
+    <section id="history">
+      <table>
+        <caption>Transacrion History</caption>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+      </table>
+    </section>
+  </body>
+</html>
