@@ -204,3 +204,29 @@ function applySaleToLessSellingProducts(products, percentage) {
   }
   return products;
 }
+
+function findProductsInCategory(products, category) {
+  let selected = [];
+  for (let product of products) {
+    if (product.category == category) {
+      selected.push(product);
+    }
+  }
+  return selected;
+}
+function findProductsWithLowStock(products, quantity) {
+  selected = [];
+  for (let product of products) {
+    if (product.stock < quantity) {
+      selected.push(product);
+    }
+  }
+  return selected;
+}
+function calculateTotalStockValue(products) {
+  let total = 0;
+  for (let product of products) {
+    total += product.price * product.stock;
+  }
+  return total;
+}
