@@ -257,12 +257,36 @@ function findMostExpensiveProductInEachCategory(products) {
     if (!catalog[product.category]) {
       catalog[product.category] = product;
     } else {
-      if (catalog[product.category]['price'] < product.price) {
+      if (catalog[product.category]["price"] < product.price) {
         catalog[product.category] = product;
       }
     }
   }
   return catalog;
 }
+function groupProductsByCategory(products) {
+  catalog = {};
+  for (let product of products) {
+    if (catalog[product.category]) {
+      catalog[product.category].push(product);
+    } else {
+      catalog[product.category] = [product];
+    }
+  }
+  return catalog;
+}
 
-console.log(findMostExpensiveProductInEachCategory(products));
+function nTopSellingProducts(products, n) {
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (products[j].sales < products[j + 1].sales) {
+        temp = products[j];
+        products[j] = products[j + 1];
+        products[j + 1] = temp;
+      }
+    }
+  }
+  return products.slice(0,n)
+}
+
+console.log(nTopSellingProducts(products,3))
