@@ -230,3 +230,39 @@ function calculateTotalStockValue(products) {
   }
   return total;
 }
+
+function getHighSalesLowStockProducts(
+  products,
+  salesThreshold,
+  stockThreshold
+) {
+  selected = [];
+  for (let product of products) {
+    if (product.stock < stockThreshold && product.sales > salesThreshold) {
+      selected.push(product);
+    }
+  }
+  return selected;
+}
+
+// catalog = {
+//     'cate1':{name,price}
+//     'cate2':{name,price}
+//     'cate3':{name,price}
+
+// }
+function findMostExpensiveProductInEachCategory(products) {
+  catalog = {};
+  for (let product of products) {
+    if (!catalog[product.category]) {
+      catalog[product.category] = product;
+    } else {
+      if (catalog[product.category]['price'] < product.price) {
+        catalog[product.category] = product;
+      }
+    }
+  }
+  return catalog;
+}
+
+console.log(findMostExpensiveProductInEachCategory(products));
