@@ -1,5 +1,5 @@
 async function getPosts(){
-    let response = await fetch('https://jsonplaceholder.typicode.com/posts')
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts/1')
     let data = await response.json()
     console.log(data)
 }
