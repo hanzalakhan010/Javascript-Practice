@@ -17,10 +17,9 @@ async function loadQuote() {
 
 
 async function copyQuote(){
-    let clipBoard = new Clipboard()
     quote = document.getElementById('text').innerText
-    quote = document.getElementById('autor').innerText
-    await clipBoard.writeText(`Quote:${quote},Autor:${author}`)
+    author = document.getElementById('author').innerText
+    await navigator.clipboard.writeText(`Quote:${quote},Autor:${author}`)
     alert('Copoied to clipboard')
 }
 loadQuote()
