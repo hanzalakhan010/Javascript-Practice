@@ -34,6 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _a;
 var _this = this;
 var users = [];
 var selectedUsers = [];
@@ -62,15 +63,41 @@ var loadAllUsers = function () { return __awaiter(_this, void 0, void 0, functio
         }
     });
 }); };
+var search = function () {
+    var searchText = document.getElementById('searchInput').value;
+    if (searchText) {
+        console.log(searchText);
+        selectedUsers = users.filter(function (user) { return user.name.includes(searchText); });
+        if (selectedUsers) {
+            renderSelectedUsers();
+        }
+        else {
+            var statusTag = document.getElementById('status');
+            if (statusTag) {
+                statusTag.innerText = 'No match Found';
+            }
+        }
+    }
+    else {
+        selectedUsers = users;
+        renderSelectedUsers();
+    }
+};
 var renderSelectedUsers = function () {
-    // document.getElementById('tbody')?.innerHTML = ''
+    var tbody = document.getElementById('tbody');
+    if (tbody) {
+        tbody.innerHTML = '';
+    }
     if (selectedUsers) {
         selectedUsers.forEach(function (user) {
-            var _a;
-            (_a = document.getElementById('tbody')) === null || _a === void 0 ? void 0 : _a.insertAdjacentHTML('beforeend', "\n                <tr>\n                    <td>".concat(user.name, "</td>\n                    <td>").concat(user.email, "</td>\n                    <td>").concat(user.address.city, "</td>\n                </tr>\n                "));
+            tbody === null || tbody === void 0 ? void 0 : tbody.insertAdjacentHTML('beforeend', "\n                <tr>\n                    <td>".concat(user.name, "</td>\n                    <td>").concat(user.email, "</td>\n                    <td>").concat(user.address.city, "</td>\n                </tr>\n                "));
         });
     }
 };
 loadAllUsers().then(function () {
     renderSelectedUsers();
+});
+(_a = document.getElementById('search-btn')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function (event) {
+    event.preventDefault();
+    search();
 });

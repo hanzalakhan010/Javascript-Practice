@@ -42,11 +42,35 @@ const loadAllUsers = async () => {
     }
 }
 
+const search = () => {
+    let searchText = (document.getElementById('searchInput') as HTMLInputElement).value
+    if (searchText) {
+        selectedUsers = users.filter((user) => user.name.includes(searchText))
+        if (selectedUsers) {
+            renderSelectedUsers()
+        }
+        else {
+            let statusTag = document.getElementById('status')
+            if (statusTag) {
+                statusTag.innerText = 'No match Found'
+
+            }
+        }
+    }
+    else{
+        selectedUsers = users
+        renderSelectedUsers()
+    }
+}
+
 const renderSelectedUsers = () => {
-    // document.getElementById('tbody')?.innerHTML = ''
+    let tbody = document.getElementById('tbody')
+    if (tbody) {
+        tbody.innerHTML = ''
+    }
     if (selectedUsers) {
         selectedUsers.forEach((user) => {
-            document.getElementById('tbody')?.insertAdjacentHTML('beforeend', `
+            tbody?.insertAdjacentHTML('beforeend', `
                 <tr>
                     <td>${user.name}</td>
                     <td>${user.email}</td>
@@ -62,3 +86,8 @@ loadAllUsers().then(() => {
     renderSelectedUsers()
 }
 )
+
+document.getElementById('search-btn')?.addEventListener('click', (event) => {
+    event.preventDefault()
+    search()
+})
