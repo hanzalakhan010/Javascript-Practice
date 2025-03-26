@@ -14,12 +14,18 @@
       <form>
         <input type="text" id="projectTitle" placeholder="Project title" />
         <input type="text" id="projectDesc" placeholder="Project Description" />
-        <input type="text" id="liveURL" placeholder="Live Url" />
-        <button type="submit" class="search-btn">Add Project</button>
+        <input type="text" type="url" id="liveURL" placeholder="Live Url" />
+        <button id = 'addBtn' type="submit" class="search-btn" >Add Project</button>
       </form>
       <table>
-        <thead></thead>
-        <tbody></tbody>
+        <thead>
+          <tr>
+            <th>Project Title</th>
+            <th>Project Description</th>
+            <th>Live URL</th>
+          </tr>
+        </thead>
+        <tbody id = 'tbody'></tbody>
       </table>
     </div>
   </body>

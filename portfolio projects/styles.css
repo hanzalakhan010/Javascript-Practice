@@ -41,6 +41,11 @@ input {
   margin-left: 5px;
   margin-right: 5px;
 }
+.liveURL{
+  overflow: hidden;
+  width: 100px;
+  text-overflow: ellipsis;
+}
 
 input::placeholder {
   color: #999;
