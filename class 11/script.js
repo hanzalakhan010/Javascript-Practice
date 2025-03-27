@@ -29,12 +29,19 @@ function mergeArray(arr1, arr2) {
 }
 
 
+
 function sum(...args) {
     return args.reduce((ele, curr) => ele + curr)
 }
-
-
 // console.log(sum(1, 2, 3, 4))
+
+function bio(...details){
+    console.log(details)
+}
+
+// bio()
+
+
 
 
 
