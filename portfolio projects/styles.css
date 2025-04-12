@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: medium;
+  font-family: 'Courier New', Courier, monospace;
+
 }
 
 body {
@@ -13,6 +16,10 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
@@ -24,36 +31,24 @@ body {
   margin-bottom: 40px;
 }
 
-form {
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-}
 
 input {
   font-size: 16px;
-  width: 300px;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #444;
   background-color: #1e1e1e;
   color: #e0e0e0;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-.liveURL{
-  overflow: hidden;
-  width: 100px;
-  text-overflow: ellipsis;
 }
 
 input::placeholder {
   color: #999;
 }
 
-.search-btn {
+button {
   margin-left: 10px;
   padding: 10px 15px;
+  margin-bottom: 2px;
   border-radius: 8px;
   background-color: #333;
   color: #e0e0e0;
@@ -88,4 +83,35 @@ td {
 
 tr:hover td {
   background-color: #333;
+}
+.container  div{
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+.container form{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  /* margin: 20px auto; */
+}
+.container form input{
+  width: 90%;
+}
+.container form button{
+  align-self: flex-end;
+  margin-right: 5%;
+}
+#tableDiv{
+  width: 100%;
+  padding: 10px;
+  height:72vh ;
+  overflow-y: scroll;
+}
+#tableDiv thead{
+  position: sticky;
+  top:0px
 }
