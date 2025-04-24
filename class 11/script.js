@@ -14,7 +14,7 @@ const user = {
 
 }
 
-const {email,id:userId} = user
+const { email, id: userId } = user
 // console.log(userId)
 // console.log(email)
 
@@ -35,13 +35,52 @@ function sum(...args) {
 }
 // console.log(sum(1, 2, 3, 4))
 
-function bio(...details){
+function bio(...details) {
     console.log(details)
 }
 
 // bio()
 
+// Practice 
+
+function isEven(num) {
+    return num % 2 == 0 ? true : false
+}
+age = 20
+let status_;
+status_ = age >= 18 ? 'Adult' : 'Minor'
+
+let num = 0
+
+// console.log(num > 0 ? 'Positive' : num == 0 ? 'Zero' : 'Negative')
 
 
+const shoppingCart = [
+    { name: 'Milk', price: 100 },
+    { name: 'eggs', price: 200 },
+    { name: 'brea', price: 400 },
+]
+
+const total = shoppingCart.reduce(
+    (acc, ele) => acc += ele.price
+    , 0)
 
 
+// function vowelCount(input){
+//     let total = [...input].reduce((acc,ele)=>{
+//         if (['a','e','i','o','u'].includes(ele)){
+//             acc+=1
+//             console.log(ele)
+//         }
+//     })
+//     return total
+// }
+// console.log(vowelCount('hanzala'))
+
+function vowelCount(input){
+    [...input].reduce((acc,ele)=>{
+        console.log(acc)
+    },0)
+}
+
+console.log(vowelCount('hanzala'))
