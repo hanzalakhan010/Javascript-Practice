@@ -77,10 +77,14 @@ const total = shoppingCart.reduce(
 // }
 // console.log(vowelCount('hanzala'))
 
-function vowelCount(input){
-    [...input].reduce((acc,ele)=>{
-        console.log(acc)
-    },0)
+function vowelCount(input) {
+    return [...input].reduce((acc, ele) => {
+        if (['a', 'e', 'i', 'o', 'u'].includes(ele)) {
+            return ++acc
+        } else {
+            return acc
+        }
+    }, 0)
 }
 
 console.log(vowelCount('hanzala'))
