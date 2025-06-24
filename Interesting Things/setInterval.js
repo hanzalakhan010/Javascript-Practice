@@ -1,4 +1,4 @@
-export function setTimeoutFunc(callback, milliSecond) {
+function setTimeoutFunc(callback, milliSecond) {
   const start = performance.now();
   const end = start + milliSecond;
   function scheduler() {
@@ -14,8 +14,16 @@ export function setTimeoutFunc(callback, milliSecond) {
   scheduler()
 }
 
-function callbackFunc() {
-  console.log("Hanzala");
+
+function callback(){
+    console.log('hanzala')
+}
+function setIntervalFunc(func,milli){
+    function repeat(){
+        func()
+        setTimeoutFunc(repeat,milli)
+    }
+    repeat()
 }
 
-setTimeoutFunc(callbackFunc, 2000);
+setIntervalFunc(callback,1000)
