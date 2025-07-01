@@ -18,7 +18,7 @@ function setTimeoutFunc(callback, milliSecond) {
 function callback(){
     console.log('hanzala')
 }
-function setIntervalFunc(func,milli){
+export function setIntervalFunc(func,milli){
     function repeat(){
         func()
         setTimeoutFunc(repeat,milli)
