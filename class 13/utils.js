@@ -1,4 +1,4 @@
-export function handleQueryParams(queryparams) {
+export function handleQueryParams(queryparams,req) {
     let parameters = {}
     let params = queryparams?.split('&')
     params?.forEach(param => {
@@ -13,6 +13,8 @@ export function handleQueryParams(queryparams) {
             parameters[key] = value
         }
     });
+    req.query = parameters
+    
     return parameters
 }
 

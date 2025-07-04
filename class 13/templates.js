@@ -1,3 +1,5 @@
+import { getUserById } from "./userCRUD.js"
+
 export function newUserTemplate() {
     return `
     <div style="font-family: Arial, sans-serif; max-width: 300px; margin: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
@@ -36,7 +38,7 @@ export function loginPage() {
     `
 }
 
-export function userDisplay(users) {
+export function usersDisplay(users) {
     return `
     <div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
         <h2 style="text-align: center;">User Display</h2>
@@ -46,6 +48,7 @@ export function userDisplay(users) {
                     <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">ID</th>
                     <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Name</th>
                     <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Email</th>
+                    <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Profile</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,10 +57,23 @@ export function userDisplay(users) {
                         <td>${user?.id}</td>
                         <td>${user?.name}</td>
                         <td>${user?.email}</td>
+                        <td><a href= '/user?id=${user?.id}'>Profile</a></td>
                     </tr>
                     `).join('')}
             </tbody>
         </table>
     </div>
+    `
+}
+
+export function userProfile(user) {
+    // console.log(user)
+    return `
+        <div style="font-family: Arial, sans-serif; max-width: 300px; margin: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <h2 style="text-align: center;">User Profile</h2>
+            <p><strong>ID:</strong> ${user?.id}</p>
+            <p><strong>Name:</strong> ${user?.name}</p>
+            <p><strong>Email:</strong> ${user?.email}</p>
+        </div>
     `
 }

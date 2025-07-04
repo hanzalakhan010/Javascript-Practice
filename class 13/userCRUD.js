@@ -60,18 +60,21 @@ let users = [
         "password": "jake123"
     }
 ]
+function generateId() {
+    return users.length ? Math.max(...users.map(user => user.id)) + 1 : 1;
+}
 
 export function createUser(userDetails) {
-    users.push(userDetails)
+    users.push({ id: generateId(), ...userDetails })
     return JSON.stringify({ 'users': users })
 }
 
 export function getAllUsers() {
     return users
 }
-export function getUserById(query) {
-    const userID = query?.id
-    if (userID) return JSON.stringify({ 'user': users.find((user) => user.id == userID) })
+export function getUserById(userID) {
+    // const userID = query?.id
+    if (userID) return users.find((user) => user.id == userID)
     return 'User not found'
 }
 
