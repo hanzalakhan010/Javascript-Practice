@@ -74,13 +74,13 @@ export default class App {
 
 export function renderTemplate(template, res, data = {}) {
     res.setHeader('Content-type', 'text/html')
-    const template = readFileSync(`./templates/${template}`, 'utf8')
-    template = template.replace(/<%=([\s\S]+?)%>/g, (_, key) => {
+    let renderedTemplate = readFileSync(`./templates/${template}`, 'utf8')
+    renderedTemplate = renderedTemplate.replace(/<%=([\s\S]+?)%>/g, (_, key) => {
         key = key.trim()
         return data[key] ?? ''
 
     })
-    return template
+    return renderedTemplate
 }
 
 export function renderStatic(file) {
