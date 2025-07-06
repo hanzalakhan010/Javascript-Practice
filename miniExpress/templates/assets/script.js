@@ -1,6 +1,7 @@
 function menuBar() {
     const menu = document.getElementById("menu");
-    if (menu.style.display === "none") {
+    console.log(menu.style.display)
+    if (menu.style.display === "none" || !menu.style.display ) {
         menu.style.display = "block";
     }
     else {

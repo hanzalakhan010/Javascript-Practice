@@ -1,13 +1,12 @@
 import http from 'http'
 import { notFound } from './defaults.js';
 import { handleQueryParams } from './utils.js';
-import { readFileSync } from 'fs'
+import { renderStatic } from './utils.js';
 export default class App {
     constructor() {
         this.routes = {
             "GET": {}, "POST": {}
         }
-        this.sessions = {}
         this.staticFolder = ''
     }
     get(route, callback) {
@@ -72,28 +71,4 @@ export default class App {
 
 
 
-export function renderTemplate(template, res, data = {}) {
-    res.setHeader('Content-type', 'text/html')
-    let renderedTemplate = readFileSync(`./templates/${template}`, 'utf8')
-    renderedTemplate = renderedTemplate.replace(/<%=([\s\S]+?)%>/g, (_, key) => {
-        key = key.trim()
-        return data[key] ?? ''
 
-    })
-    return renderedTemplate
-}
-
-export function renderStatic(file) {
-    try {
-
-        return readFileSync(file, 'utf8')
-    }
-    catch (err) {
-        if (err.code == 'ENOENT') {
-            console.error(`File not found: ${file}`);
-            return 'File not found'
-        }
-        throw err
-
-    }
-}

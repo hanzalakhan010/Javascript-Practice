@@ -1,10 +1,11 @@
 import { auth } from "./backened.js";
-import App, { renderTemplate } from "./factory.js";
+import App from "./factory.js";
+import { renderTemplate, SessionManager } from "./utils.js";
 
 
 const app = new App()
 app.staticFolder = '/assets'
-
+const session = new SessionManager()
 
 
 app.get('/login', (req, res) => {
@@ -12,7 +13,9 @@ app.get('/login', (req, res) => {
 })
 app.post('/login', async (req, res) => {
     const user = await app.handleForm(req)
-    if (auth(user)) {
+    const userAuth = auth(user)
+    if (userAuth) {
+        session.set(userAuth, res)
         console.log('Authorized')
         app.redirect(res, '/dashboard')
     } else {
@@ -22,12 +25,26 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.get('/logout',(req,res)=>{
+    session.deleteSession(req)
+    app.redirect(res,'/login')
+
+})
+
 app.get('/dashboard', (req, res) => {
-    res.end(renderTemplate('dashboard.html', res))
+    if (session.hasSession(req)) {
+        return res.end(renderTemplate('dashboard.html', res, session.getSession(req)))
+    }
+    return app.redirect(res,'/login')
+
 })
 
 app.get('/profile', (req, res) => {
-    res.end(renderTemplate('user.html', res))
+    if (session.hasSession(req)) {
+        return res.end(renderTemplate('profile.html', res, session.getSession(req)))
+    }
+    return app.redirect(res,'/login')
+
 })
 app.get('/forgot_password', (req, res) => {
 

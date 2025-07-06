@@ -58,6 +58,7 @@
       text-decoration: none;
       font-weight: 600;
     }
+
     /*     
     article {
       margin-top: 15px;
@@ -100,7 +101,7 @@
       border: 1px solid #ddd;
       box-shadow: 1px 1px 1px 2px rgba(55, 109, 209, 0.664);
     }
-    
+
     .stud-pic {
       width: 5000px;
       border-radius: 50%;
@@ -110,21 +111,21 @@
 
 <body class="box">
   <header>
-    <h1 class="hd">Student Profile</h1>
-    
+    <h1 class="hd">Student Portal</h1>
+
     <button onclick="menuBar()"><img src="https://img.icons8.com/3d-fluency/30/menu.png" alt="menu"></button>
 
-        <nav id="menu" >
-            <a href="/dashboard" target="_self">Home</a>
-            <a href="/profile" target="_self">View Profile</a>
-            <a href="login" target="_self">Logout</a> 
-        </nav>
-</header>
+    <nav id="menu">
+      <a href="/dashboard">Home</a>
+      <a href="/profile">View Profile</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
 
-  
+
   <main>
-    
-    
+
+
     <figure>
       <a href="./edit.html" class="edit">Edit</a>
       <h2>Student Picture</h2>
@@ -134,13 +135,13 @@
     <section class="personal-info">
       <h2>Personal Information</h2>
       <div class="info-grid">
-        <div><strong>Full Name:</strong> John Doe</div>
-        <div><strong>Father's Name:</strong> Mr. Ali Raza</div>
-        <div><strong>Roll Number:</strong> 2023-CS-001</div>
-        <div><strong>Date of Birth:</strong> April 23, 2005</div>
-        <div><strong>CNIC / B-Form:</strong> 40401-5922132-1</div>
-        <div><strong>Email Address:</strong> john.doe@email.com</div>
-        <div style="max-width: 580px;"><strong>Phone Number:</strong> +92 311 1111111</div>
+        <div><strong>Full Name:</strong> {{fullName}}</div>
+        <div><strong>Father's Name:</strong>{{fathersName}}</div>
+        <div><strong>Roll Number:</strong> {{rollNo}}</div>
+        <div><strong>Date of Birth:</strong>{{dateOfBirth}}</div>
+        <div><strong>CNIC / B-Form:</strong>{{cnicOrBForm}}</div>
+        <div><strong>Email Address:</strong> {{email}}</div>
+        <div style="max-width: 580px;"><strong>Phone Number:</strong> {{phoneNumber}}</div>
       </div>
     </section>
 
