@@ -7,8 +7,11 @@ const app = new App()
 app.staticFolder = '/assets'
 const session = new SessionManager()
 
+function checkSession(req, res) {
+    console.log('checking session')
+}
 
-app.get('/login', (req, res) => {
+app.get('/login', checkSession, (req, res) => {
     res.end(renderTemplate('login.html', res))
 })
 app.post('/login', async (req, res) => {
@@ -25,9 +28,9 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.get('/logout',(req,res)=>{
+app.get('/logout', (req, res) => {
     session.deleteSession(req)
-    app.redirect(res,'/login')
+    app.redirect(res, '/login')
 
 })
 
@@ -35,7 +38,7 @@ app.get('/dashboard', (req, res) => {
     if (session.hasSession(req)) {
         return res.end(renderTemplate('dashboard.html', res, session.getSession(req)))
     }
-    return app.redirect(res,'/login')
+    return app.redirect(res, '/login')
 
 })
 
@@ -43,7 +46,7 @@ app.get('/profile', (req, res) => {
     if (session.hasSession(req)) {
         return res.end(renderTemplate('profile.html', res, session.getSession(req)))
     }
-    return app.redirect(res,'/login')
+    return app.redirect(res, '/login')
 
 })
 app.get('/forgot_password', (req, res) => {

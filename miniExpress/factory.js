@@ -9,11 +9,11 @@ export default class App {
         }
         this.staticFolder = ''
     }
-    get(route, callback) {
-        this.routes['GET'][route] = callback;
+    get(route, ...callbacks) {
+        this.routes['GET'][route] = callbacks;
     }
-    post(route, callback) {
-        this.routes['POST'][route] = callback;
+    post(route, ...callbacks) {
+        this.routes['POST'][route] = callbacks;
     }
     patch(route, callback) {
         this.routes['PATCH'][route] = callback;
@@ -45,7 +45,7 @@ export default class App {
 
     serveStatic(req, res) {
         console.log('serving', `./templates/${req.url}`)
-        return renderStatic(`./templates/${req.url}`)
+        return renderStatic(`./templates/${req.url}`, res)
     }
 
     routeHandler(req, res) {
@@ -63,7 +63,11 @@ export default class App {
             return res.end(notFound())
         }
         else {
-            return this.routes[req.method][path](req, res)
+            const callbacks = this.routes[req.method][path]
+            console.log(callbacks)
+            for (let callback of callbacks) {
+                if (callback(req, res)) break
+            }
         }
 
     }
