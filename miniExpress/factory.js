@@ -8,6 +8,10 @@ export default class App {
             "GET": {}, "POST": {}
         }
         this.staticFolder = ''
+        this.middlewares = []
+    }
+    use(middleware) {
+        this.middlewares.push(middleware)
     }
     get(route, ...callbacks) {
         this.routes['GET'][route] = callbacks;
@@ -49,13 +53,12 @@ export default class App {
     }
 
     routeHandler(req, res) {
-        console.log('Request received:', req.method, req.url);
-        // console.log(req.url.startsWith(this.staticFolder))
+        for(let middleware of this.middlewares){
+            middleware(req)
+        }
         if (this.staticFolder && req.url.startsWith(this.staticFolder)) {
             return res.end(this.serveStatic(req, res))
         }
-        // console.log(req.url)
-        // console.log(this.staticFolder)
         let [path, queryparams] = req.url.split('?')
         if (queryparams) handleQueryParams(queryparams, req)
         if (!this.routes?.[req.method]?.[path]) {
@@ -64,7 +67,6 @@ export default class App {
         }
         else {
             const callbacks = this.routes[req.method][path]
-            console.log(callbacks)
             for (let callback of callbacks) {
                 if (callback(req, res)) break
             }

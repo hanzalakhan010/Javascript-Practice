@@ -2,11 +2,16 @@ import { auth } from "./backened.js";
 import App from "./factory.js";
 import { renderTemplate, SessionManager } from "./utils.js";
 
-
 const app = new App()
 app.staticFolder = '/assets'
 const session = new SessionManager()
 
+
+function logger(req) {
+    console.log(`${new Date().toISOString()} : ${req.url} : ${req.method} `)
+}
+
+app.use(logger)
 function checkSession(req, res) {
     console.log('checking session')
 }
