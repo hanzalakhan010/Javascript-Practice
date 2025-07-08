@@ -12,6 +12,7 @@ function logger(req) {
 }
 
 app.use(logger)
+
 function checkSession(req, res) {
     console.log('checking session')
 }
@@ -19,6 +20,7 @@ function checkSession(req, res) {
 app.get('/login', checkSession, (req, res) => {
     res.end(renderTemplate('login.html', res))
 })
+
 app.post('/login', async (req, res) => {
     const user = await app.handleForm(req)
     const userAuth = auth(user)

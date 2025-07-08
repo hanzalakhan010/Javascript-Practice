@@ -10,14 +10,19 @@ export default class App {
         this.staticFolder = ''
         this.middlewares = []
     }
-    use(middleware) {
-        this.middlewares.push(middleware)
+    use(...args) {
+        if (typeof args?.[0] === 'string'){
+
+        }
+        else{
+            this.middlewares.push(...args)
+        }
     }
     get(route, ...callbacks) {
-        this.routes['GET'][route] = callbacks;
+        this.routes['GET'][route] = [...this.middlewares,...callbacks];
     }
     post(route, ...callbacks) {
-        this.routes['POST'][route] = callbacks;
+        this.routes['POST'][route] = [...this.middlewares,...callbacks];
     }
     patch(route, callback) {
         this.routes['PATCH'][route] = callback;
