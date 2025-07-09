@@ -1,4 +1,5 @@
-export function notFound() {
+export function notFound(res) {
+    res.writeHead(404)
     return 'Page not found'
 }
 export function methodNotAllowed() {

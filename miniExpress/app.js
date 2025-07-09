@@ -1,13 +1,14 @@
 import { auth } from "./backened.js";
-import App from "./factory.js";
+import MiniExpress from "./miniExpress.js";
+import user from "./userRoutes.js";
 import { renderTemplate, SessionManager } from "./utils.js";
 
-const app = new App()
+const app = new MiniExpress()
 app.staticFolder = '/assets'
 const session = new SessionManager()
 
 
-function logger(req) {
+function logger(req, res) {
     console.log(`${new Date().toISOString()} : ${req.url} : ${req.method} `)
 }
 
@@ -49,13 +50,16 @@ app.get('/dashboard', (req, res) => {
 
 })
 
-app.get('/profile', (req, res) => {
-    if (session.hasSession(req)) {
-        return res.end(renderTemplate('profile.html', res, session.getSession(req)))
-    }
-    return app.redirect(res, '/login')
+app.use('/user',user)
 
+app.get('/news/:id', (req, res) => {
+    console.log('news', req.params)
+    res.end(`news ${req?.params?.id}`)
+    // res.end('news')
 })
+
+
+
 app.get('/forgot_password', (req, res) => {
 
     res.end(renderTemplate('forgot_password.html', res))
@@ -64,4 +68,5 @@ app.get('/reset_password', (req, res) => {
     res.end(renderTemplate('reset_password.html', res))
 })
 
-app.listen(3000, () => { console.log('Running server on port 3000') })
+const port = 3000
+app.listen(port, () => { console.log('Running server on port', port) })

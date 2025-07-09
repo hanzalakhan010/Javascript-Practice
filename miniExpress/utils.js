@@ -28,20 +28,23 @@ export function handleQueryParams(queryparams, req) {
     let params = queryparams.split('&')
     params.forEach(param => {
         let [rawKey, rawValue = ''] = param.split('=')
-        const key = decodeURIComponent(rawKey)
-        let value = decodeURIComponent(rawValue)
+        if (rawKey) {
 
-        // Try to cast to correct type
-        if (value === 'true') {
-            value = true
-        } else if (value === 'false') {
-            value = false
-        } else if (/^-?\d+$/.test(value)) {
-            value = parseInt(value, 10)
+            const key = decodeURIComponent(rawKey)
+            let value = decodeURIComponent(rawValue)
+
+            // Try to cast to correct type
+            if (value === 'true') {
+                value = true
+            } else if (value === 'false') {
+                value = false
+            } else if (/^-?\d+$/.test(value)) {
+                value = parseInt(value, 10)
+            }
+            // else: leave it as string (e.g. password, email, etc.)
+
+            parameters[key] = value
         }
-        // else: leave it as string (e.g. password, email, etc.)
-
-        parameters[key] = value
     })
 
     if (req) req.query = parameters
@@ -112,3 +115,4 @@ export class SessionManager {
     }
 
 }
+

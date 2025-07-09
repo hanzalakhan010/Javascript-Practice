@@ -1,20 +1,23 @@
-export function handleQueryParams(queryparams,req) {
+export function handleQueryParams(queryparams, req) {
     let parameters = {}
     let params = queryparams?.split('&')
     params?.forEach(param => {
         let [key, value] = param.split('=')
-        if (parseInt(value)) {
-            parameters[key] = parseInt(value)
-        }
-        else if (value == 'true' || value == 'false') {
-            parameters[key] = Boolean(value == 'true' ? true : false)
-        }
-        else {
-            parameters[key] = value
+        console.log(handleQueryParams)
+        if (key && value) {
+            if (parseInt(value)) {
+                parameters[key] = parseInt(value)
+            }
+            else if (value == 'true' || value == 'false') {
+                parameters[key] = Boolean(value == 'true' ? true : false)
+            }
+            else {
+                parameters[key] = value
+            }
         }
     });
     req.query = parameters
-    
+
     return parameters
 }
 
