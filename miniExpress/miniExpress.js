@@ -38,31 +38,25 @@ export default class MiniExpress extends Router {
     }
 
     register(route, routePool) {
-        const altererdStaticRoutes = {}
-        const altererdDynamicRoutes = {}
         for (let method in routePool.routes) {
-            altererdStaticRoutes[method] = {}
             for (let endpoint in routePool.routes[method]) {
-                altererdStaticRoutes[method][`${route}${endpoint}`] = routePool.routes[method][endpoint]
+                this[method.toLowerCase()](`${route}${endpoint}`, ...routePool.routes[method][endpoint])
             }
         }
         for (let method in routePool.dynamicRoutes) {
-            // console.log(method)
-            altererdDynamicRoutes[method] = {}
             for (let endpoint in routePool.dynamicRoutes[method]) {
-                // console.log(endpoint)
-                altererdDynamicRoutes[method][`${route}${endpoint}`] = routePool.dynamicRoutes[method][endpoint]
+                this[method.toLowerCase()](`${route}${endpoint}`, ...routePool.dynamicRoutes[method][endpoint])
             }
         }
-        this.routes.GET = { ...this.routes.GET, ...altererdStaticRoutes.GET }
-        this.routes.POST = { ...this.routes.POST, ...altererdStaticRoutes.POST }
-        this.routes.PATCH = { ...this.routes.PATCH, ...altererdStaticRoutes.PATCH }
-        this.routes.DELETE = { ...this.routes.DELETE, ...altererdStaticRoutes.DELETE }
+        // this.routes.GET = { ...this.routes.GET, ...altererdStaticRoutes.GET }
+        // this.routes.POST = { ...this.routes.POST, ...altererdStaticRoutes.POST }
+        // this.routes.PATCH = { ...this.routes.PATCH, ...altererdStaticRoutes.PATCH }
+        // this.routes.DELETE = { ...this.routes.DELETE, ...altererdStaticRoutes.DELETE }
 
-        this.dynamicRoutes.GET = { ...this.dynamicRoutes.GET, ...altererdDynamicRoutes.GET }
-        this.dynamicRoutes.POST = { ...this.dynamicRoutes.POST, ...altererdDynamicRoutes.POST }
-        this.dynamicRoutes.PATCH = { ...this.dynamicRoutes.PATCH, ...altererdDynamicRoutes.PATCH }
-        this.dynamicRoutes.DELETE = { ...this.dynamicRoutes.DELETE, ...altererdDynamicRoutes.DELETE }
+        // this.dynamicRoutes.GET = { ...this.dynamicRoutes.GET, ...altererdDynamicRoutes.GET }
+        // this.dynamicRoutes.POST = { ...this.dynamicRoutes.POST, ...altererdDynamicRoutes.POST }
+        // this.dynamicRoutes.PATCH = { ...this.dynamicRoutes.PATCH, ...altererdDynamicRoutes.PATCH }
+        // this.dynamicRoutes.DELETE = { ...this.dynamicRoutes.DELETE, ...altererdDynamicRoutes.DELETE }
         // console.log(this.routes)
     }
     use(...args) {
@@ -72,6 +66,7 @@ export default class MiniExpress extends Router {
         else {
             this.middlewares.push(...args)
         }
+        // console.log(this.dynamicRoutes)
     }
     redirect(res, location) {
         res.writeHead(302, { Location: location })
