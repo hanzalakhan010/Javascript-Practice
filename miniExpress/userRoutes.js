@@ -1,6 +1,7 @@
 import { Router } from "./miniExpress.js";
-
+import { renderTemplate, SessionManager } from "./utils.js";
 const user = new Router();
+const session = new SessionManager()
 
 user.get('/:id', (req, res) => {
     console.log('hanzala', req.params)

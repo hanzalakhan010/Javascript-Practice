@@ -84,6 +84,10 @@ export function renderStatic(file, res) {
 
 export class SessionManager {
     constructor() {
+        if(SessionManager._instance){
+            return SessionManager._instance
+        }
+        SessionManager._instance = this
         this.sessions = {}
         this.flashes = {}
     }
@@ -95,7 +99,7 @@ export class SessionManager {
         )
     }
     #parseCookies(req) {
-        const raw = req.headers.cookie || ''
+        const raw = req?.headers?.cookie || ''
         return Object.fromEntries(raw.split('; ').map(cookie => cookie.split('=')))
     }
     hasSession(req) {

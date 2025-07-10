@@ -14,8 +14,12 @@ function logger(req, res) {
 
 app.use(logger)
 
+app.use('/user', user)
 function checkSession(req, res) {
-    console.log('checking session')
+    if (session.hasSession(req)) {
+        app.redirect(res, `/user/${session.getSession(req)?.id}/dashboard`)
+        return
+    }
 }
 
 app.get('/login', checkSession, (req, res) => {
@@ -50,7 +54,6 @@ app.get('/dashboard', (req, res) => {
 
 })
 
-app.use('/user',user)
 
 app.get('/news/:id', (req, res) => {
     console.log('news', req.params)

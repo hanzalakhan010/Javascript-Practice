@@ -33,7 +33,6 @@ export class Router {
 export default class MiniExpress extends Router {
     constructor() {
         super()
-
         this.staticFolder = ''
     }
 
@@ -48,16 +47,7 @@ export default class MiniExpress extends Router {
                 this[method.toLowerCase()](`${route}${endpoint}`, ...routePool.dynamicRoutes[method][endpoint])
             }
         }
-        // this.routes.GET = { ...this.routes.GET, ...altererdStaticRoutes.GET }
-        // this.routes.POST = { ...this.routes.POST, ...altererdStaticRoutes.POST }
-        // this.routes.PATCH = { ...this.routes.PATCH, ...altererdStaticRoutes.PATCH }
-        // this.routes.DELETE = { ...this.routes.DELETE, ...altererdStaticRoutes.DELETE }
 
-        // this.dynamicRoutes.GET = { ...this.dynamicRoutes.GET, ...altererdDynamicRoutes.GET }
-        // this.dynamicRoutes.POST = { ...this.dynamicRoutes.POST, ...altererdDynamicRoutes.POST }
-        // this.dynamicRoutes.PATCH = { ...this.dynamicRoutes.PATCH, ...altererdDynamicRoutes.PATCH }
-        // this.dynamicRoutes.DELETE = { ...this.dynamicRoutes.DELETE, ...altererdDynamicRoutes.DELETE }
-        // console.log(this.routes)
     }
     use(...args) {
         if (typeof args[0] === 'string') {
@@ -80,15 +70,12 @@ export default class MiniExpress extends Router {
                 req.form = body
                 body = handleQueryParams(body)
                 resolve(body)
-            }
-            )
+            })
             req.on('error', error => reject(error))
         })
     }
     listen(port, callback) {
         http.createServer((req, res) => {
-            // this.req = req
-            // this.res = res
             this.routeHandler(req, res)
         }).listen(port, callback)
     }
@@ -132,7 +119,6 @@ export default class MiniExpress extends Router {
         else {
             return res.end(notFound(res))
         }
-
     }
 }
 
