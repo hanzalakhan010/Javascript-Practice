@@ -28,8 +28,6 @@ export class Router {
         this.routes['PATCH'][route] = callback;
     }
 }
-
-
 export default class MiniExpress extends Router {
     constructor() {
         super()

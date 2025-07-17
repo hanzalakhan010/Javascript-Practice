@@ -1,5 +1,5 @@
-const userMap = {
-    "alice.johnson@example.com": {
+const userList = [
+    {
         id: 1,
         fullName: "Alice Johnson",
         fathersName: "Robert Johnson",
@@ -13,7 +13,7 @@ const userMap = {
         createdAt: "2024-01-10T08:45:00Z",
         rollNo: "A001"
     },
-    "bob.smith@example.com": {
+    {
         id: 2,
         fullName: "Bob Smith",
         fathersName: "James Smith",
@@ -27,7 +27,7 @@ const userMap = {
         createdAt: "2024-02-15T12:00:00Z",
         rollNo: "B002"
     },
-    "charlie.lee@example.com": {
+    {
         id: 3,
         fullName: "Charlie Lee",
         fathersName: "David Lee",
@@ -41,7 +41,7 @@ const userMap = {
         createdAt: "2024-03-20T15:30:00Z",
         rollNo: "C003"
     },
-    "diana.ross@example.com": {
+    {
         id: 4,
         fullName: "Diana Ross",
         fathersName: "Edward Ross",
@@ -55,7 +55,7 @@ const userMap = {
         createdAt: "2024-04-05T09:15:00Z",
         rollNo: "D004"
     },
-    "eric.miller@example.com": {
+    {
         id: 5,
         fullName: "Eric Miller",
         fathersName: "Frank Miller",
@@ -69,13 +69,11 @@ const userMap = {
         createdAt: "2024-05-25T14:00:00Z",
         rollNo: "E005"
     }
-};
+];
 
-export function auth(user) {
-
-    if (!user?.email || !user?.password) return false
-    if (!userMap?.[user.email]) return false
-    if (!userMap?.[user.email]?.password == user?.password) return false
-    return userMap[user.email]
-
+export function auth(userCred) {
+    if (!userCred?.email || !userCred?.password) return false
+    const user = userList.find((user_) => user_.email === userCred.email && user_.password === userCred.password)
+    if (!user) return false
+    return user
 }
