@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "This is a 'sub repo' of PSDC projects as that REPO is now too much cluttered so I have to separate JS practice stuff in this repo",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "HanzalaKhan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pug": "^3.0.3"
+  }
 }
