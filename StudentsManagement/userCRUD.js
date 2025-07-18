@@ -79,9 +79,10 @@ function generateId() {
 }
 
 export function createUser(userDetails) {
-    users.push({ id: generateId(), ...userDetails })
+    const id = generateId()
+    users.push({id, ...userDetails })
     saveState()
-    return users
+    return id
 }
 
 export function getAllUsers() {
@@ -89,7 +90,7 @@ export function getAllUsers() {
 }
 export function getUserById(userID) {
     if (userID) return users.find((user) => user.id == userID)
-    return 'User not found'
+    return
 }
 
 export function deleteUserById(query) {
