@@ -31,12 +31,9 @@ app.post('/login', async (req, res) => {
     const userAuth = auth(user)
     if (userAuth) {
         session.set(userAuth, res)
-        console.log('Authorized')
         app.redirect(res, '/dashboard')
     } else {
-        console.log('Not authorized')
         app.redirect(res, '/login')
-
     }
 })
 
@@ -47,6 +44,7 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/dashboard', (req, res) => {
+    console.log(session.getSession(req))
     if (session.hasSession(req)) {
         return res.end(renderTemplate('dashboard.html', res, session.getSession(req)))
     }
@@ -74,5 +72,3 @@ app.get('/reset_password', (req, res) => {
 const port = 3000
 
 app.listen(port, () => { console.log('Running server on port', port) })
-console.log(app.routes)
-console.log(app.dynamicRoutes)

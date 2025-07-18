@@ -7,7 +7,7 @@ user.get('/:id', (req, res) => {
     console.log('hanzala', req.params)
     res.end(`user ${req?.params?.id}`)
 })
-user.get('/:id/profile/:section', (req, res) => {
+user.get('/:id/profile', (req, res) => {
     console.log('hanzala', req.params)
     res.end(`user ${req?.params?.id}`)
 })

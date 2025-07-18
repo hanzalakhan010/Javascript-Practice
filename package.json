@@ -10,7 +10,11 @@
   "author": "HanzalaKhan",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "express": "^5.1.0",
     "pug": "^3.0.3"
+=======
+    "express": "^5.1.0"
+>>>>>>> f69de9d (router work)
   }
 }
