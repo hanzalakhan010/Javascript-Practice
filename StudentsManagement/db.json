@@ -201,14 +201,81 @@
             "name": "Muhammad Hanzala",
             "email": "thisishanzalakhan@outlook.com",
             "dob": "2025-07-02",
-            "major": "Mechanical Engineering"
+            "major": "Business Administration"
         }
     ],
-    "analytics": {
-        "students": 125,
-        "courses": 14,
-        "faculty": 10,
-        "sessions": 3,
-        "averageAttendanceRate": 89.5
-    }
+    "courses": [
+        {
+            "courseId": "CS101",
+            "courseName": "Data Structures",
+            "credits": 3,
+            "department": "Computer Science"
+        },
+        {
+            "courseId": "CS102",
+            "courseName": "Operating Systems",
+            "credits": 4,
+            "department": "Computer Science"
+        },
+        {
+            "courseId": "IT201",
+            "courseName": "Networking",
+            "credits": 3,
+            "department": "Information Technology"
+        },
+        {
+            "courseId": "IT202",
+            "courseName": "Cyber Security",
+            "credits": 3,
+            "department": "Information Technology"
+        },
+        {
+            "courseId": "BA101",
+            "courseName": "Principles of Management",
+            "credits": 3,
+            "department": "Business Administration"
+        },
+        {
+            "courseId": "BA102",
+            "courseName": "Marketing Basics",
+            "credits": 3,
+            "department": "Business Administration"
+        },
+        {
+            "courseId": "EE301",
+            "courseName": "Circuit Analysis",
+            "credits": 4,
+            "department": "Electrical Engineering"
+        },
+        {
+            "courseId": "EE302",
+            "courseName": "Control Systems",
+            "credits": 3,
+            "department": "Electrical Engineering"
+        },
+        {
+            "courseId": "PSY101",
+            "courseName": "Cognitive Psychology",
+            "credits": 3,
+            "department": "Psychology"
+        },
+        {
+            "courseId": "PSY102",
+            "courseName": "Social Psychology",
+            "credits": 3,
+            "department": "Psychology"
+        },
+        {
+            "courseId": "ME101",
+            "courseName": "Thermodynamics",
+            "credits": 4,
+            "department": "Mechanical Engineering"
+        },
+        {
+            "courseId": "ME102",
+            "courseName": "Fluid Mechanics",
+            "credits": 3,
+            "department": "Mechanical Engineering"
+        }
+    ]
 }
