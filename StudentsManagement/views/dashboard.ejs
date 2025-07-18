@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family:'Courier New', Courier, monospace;
+            background: #f4f6f8;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1 1 200px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        .card p {
+            margin-top: 8px;
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <%- include('partials/nav')%>
+    <h1>Admin Dashboard</h1>
+    <div class="dashboard">
+        <div class="card">
+            <h2>
+                <%=analytics.students%>
+            </h2>
+            <p>Students</p>
+        </div>
+        <div class="card">
+            <h2>
+                <%=analytics.courses%>
+            </h2>
+            <p>Courses</p>
+        </div>
+        <div class="card">
+            <h2>
+                <%=analytics.faculty%>
+            </h2>
+            <p>Faculty</p>
+        </div>
+        <div class="card">
+            <h2>
+                <%=analytics.sessions%>
+            </h2>
+            <p>Sessions</p>
+        </div>
+        <div class="card">
+            <h2>
+                <%=analytics.averageAttendanceRate%>
+            </h2>
+            <p>Avg. Attendance</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
