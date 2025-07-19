@@ -1,7 +1,6 @@
 import fs from 'fs'
 
-let students;
-loadState()
+let students = loadState()
 
 function saveState() {
     fs.writeFile('db.json', JSON.stringify({ students }), (err) => {
@@ -13,10 +12,10 @@ function saveState() {
 
 function loadState() {
     try {
-        students = JSON.parse(fs.readFileSync('db.json', 'utf-8'))?.students ?? []
+        return JSON.parse(fs.readFileSync('db.json', 'utf-8'))?.students ?? []
     } catch (err) {
         console.log("Error loading state:", err)
-        students = []
+        return []
     }
 }
 

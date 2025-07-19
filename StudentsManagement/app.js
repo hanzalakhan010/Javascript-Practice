@@ -84,6 +84,9 @@ app.post('/login', checkGuest, (req, res) => {
         res.redirect('/login')
     }
 })
-
+app.get('/logout',(req,res)=>{
+    loggedIn = false
+    res.redirect('/login')
+})
 
 app.listen(3000, '0.0.0.0', () => { console.log('Listening on port 3000') })

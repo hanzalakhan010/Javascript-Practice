@@ -11,13 +11,13 @@
             "major": "Computer Science",
             "courses": [
                 {
-                    "courseId": "CS101",
+                    "courseId": "1",
                     "courseName": "Data Structures",
                     "credits": 3,
                     "grade": "A"
                 },
                 {
-                    "courseId": "CS102",
+                    "courseId": "2",
                     "courseName": "Operating Systems",
                     "credits": 4,
                     "grade": "B+"
@@ -47,13 +47,13 @@
             "major": "Information Technology",
             "courses": [
                 {
-                    "courseId": "IT201",
+                    "courseId": "3",
                     "courseName": "Networking",
                     "credits": 3,
                     "grade": "A"
                 },
                 {
-                    "courseId": "IT202",
+                    "courseId": "4",
                     "courseName": "Cyber Security",
                     "credits": 3,
                     "grade": "A-"
@@ -78,13 +78,13 @@
             "major": "Business Administration",
             "courses": [
                 {
-                    "courseId": "BA101",
+                    "courseId": "5",
                     "courseName": "Principles of Management",
                     "credits": 3,
                     "grade": "A-"
                 },
                 {
-                    "courseId": "BA102",
+                    "courseId": "6",
                     "courseName": "Marketing Basics",
                     "credits": 3,
                     "grade": "B+"
@@ -109,13 +109,13 @@
             "major": "Electrical Engineering",
             "courses": [
                 {
-                    "courseId": "EE301",
+                    "courseId": "7",
                     "courseName": "Circuit Analysis",
                     "credits": 4,
                     "grade": "B"
                 },
                 {
-                    "courseId": "EE302",
+                    "courseId": "8",
                     "courseName": "Control Systems",
                     "credits": 3,
                     "grade": "A"
@@ -140,13 +140,13 @@
             "major": "Psychology",
             "courses": [
                 {
-                    "courseId": "PSY101",
+                    "courseId": "9",
                     "courseName": "Cognitive Psychology",
                     "credits": 3,
                     "grade": "A"
                 },
                 {
-                    "courseId": "PSY102",
+                    "courseId": "10",
                     "courseName": "Social Psychology",
                     "credits": 3,
                     "grade": "A"
@@ -176,13 +176,13 @@
             "major": "Mechanical Engineering",
             "courses": [
                 {
-                    "courseId": "ME101",
+                    "courseId": "11",
                     "courseName": "Thermodynamics",
                     "credits": 4,
                     "grade": "B-"
                 },
                 {
-                    "courseId": "ME102",
+                    "courseId": "12",
                     "courseName": "Fluid Mechanics",
                     "credits": 3,
                     "grade": "C+"
@@ -206,76 +206,83 @@
     ],
     "courses": [
         {
-            "courseId": "CS101",
+            "courseId": "1",
             "courseName": "Data Structures",
             "credits": 3,
             "department": "Computer Science"
         },
         {
-            "courseId": "CS102",
+            "courseId": "2",
             "courseName": "Operating Systems",
             "credits": 4,
             "department": "Computer Science"
         },
         {
-            "courseId": "IT201",
+            "courseId": "3",
             "courseName": "Networking",
             "credits": 3,
             "department": "Information Technology"
         },
         {
-            "courseId": "IT202",
+            "courseId": "4",
             "courseName": "Cyber Security",
             "credits": 3,
             "department": "Information Technology"
         },
         {
-            "courseId": "BA101",
+            "courseId": "5",
             "courseName": "Principles of Management",
             "credits": 3,
             "department": "Business Administration"
         },
         {
-            "courseId": "BA102",
+            "courseId": "6",
             "courseName": "Marketing Basics",
             "credits": 3,
             "department": "Business Administration"
         },
         {
-            "courseId": "EE301",
+            "courseId": "7",
             "courseName": "Circuit Analysis",
             "credits": 4,
             "department": "Electrical Engineering"
         },
         {
-            "courseId": "EE302",
+            "courseId": "8",
             "courseName": "Control Systems",
             "credits": 3,
             "department": "Electrical Engineering"
         },
         {
-            "courseId": "PSY101",
+            "courseId": "9",
             "courseName": "Cognitive Psychology",
             "credits": 3,
             "department": "Psychology"
         },
         {
-            "courseId": "PSY102",
+            "courseId": "10",
             "courseName": "Social Psychology",
             "credits": 3,
             "department": "Psychology"
         },
         {
-            "courseId": "ME101",
+            "courseId": "11",
             "courseName": "Thermodynamics",
             "credits": 4,
             "department": "Mechanical Engineering"
         },
         {
-            "courseId": "ME102",
+            "courseId": "12",
             "courseName": "Fluid Mechanics",
             "credits": 3,
             "department": "Mechanical Engineering"
         }
-    ]
+    ],
+    "analytics": {
+        "students": 111,
+        "courses": 10,
+        "faculty": 10,
+        "averageAttendanceRate": 90,
+        "sessions": 20
+    }
 }

@@ -84,7 +84,7 @@ export function renderStatic(file, res) {
 
 export class SessionManager {
     constructor() {
-        if(SessionManager._instance){
+        if (SessionManager._instance) {
             return SessionManager._instance
         }
         SessionManager._instance = this
@@ -117,6 +117,15 @@ export class SessionManager {
         this.sessions[cookies?.sessionId] = null
         return true
     }
-
 }
 
+class JWT {
+    constructor(secretKey) {
+        this.secretKey = secretKey
+    }
+    parseCookies(req) {
+        const raw = req?.headers?.cookie || ''
+        return Object.fromEntries(raw.split('; ').map(cookie => cookie.split('=')))
+    }
+    sign(data){}
+}
