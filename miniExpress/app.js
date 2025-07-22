@@ -1,16 +1,17 @@
 import { auth } from "./backened.js";
+import JWT from "./JWT.js";
 import MiniExpress from "./miniExpress.js";
 import user from "./userRoutes.js";
 import { renderTemplate, SessionManager } from "./utils.js";
+import { logger } from "./logger.js";
+
 
 const app = new MiniExpress()
 app.staticFolder = '/assets'
 const session = new SessionManager()
+const jwt = new JWT('suupper-secret-key')
 
 
-function logger(req, res) {
-    console.log(`${new Date().toISOString()} : ${req.url} : ${req.method} `)
-}
 
 app.use(logger)
 
@@ -29,35 +30,33 @@ app.get('/login', checkSession, (req, res) => {
 app.post('/login', async (req, res) => {
     const user = await app.handleForm(req)
     const userAuth = auth(user)
+    // console.log(userAuth)
     if (userAuth) {
-        session.set(userAuth, res)
+        //     session.set(userAuth, res)
+        const jwtToken = jwt.createJWT({ sub: userAuth })
+        res.setHeader('Set-Cookie', `jwtToken=${jwtToken}; httpOnly; Path=/`)
         app.redirect(res, '/dashboard')
     } else {
         app.redirect(res, '/login')
     }
+
 })
 
 app.get('/logout', (req, res) => {
-    session.deleteSession(req)
+    // session.deleteSession(req)
+    res.setHeader('Set-Cookie',`jwtToken=; httpOnly; Path=/; MaxAge=0`)
     app.redirect(res, '/login')
 
 })
 
-app.get('/dashboard', (req, res) => {
-    console.log(session.getSession(req))
-    if (session.hasSession(req)) {
-        return res.end(renderTemplate('dashboard.html', res, session.getSession(req)))
-    }
-    return app.redirect(res, '/login')
+app.get('/dashboard', jwt.jwtProtetected, (req, res) => {
+    // if (session.hasSession(req)) {
+    return res.end(renderTemplate('dashboard.html', res, req?.user?.sub))
+    // }
+    // return app.redirect(res, '/login')
 
 })
 
-
-app.get('/news/:id', (req, res) => {
-    console.log('news', req.params)
-    res.end(`news ${req?.params?.id}`)
-    // res.end('news')
-})
 
 
 

@@ -118,14 +118,3 @@ export class SessionManager {
         return true
     }
 }
-
-class JWT {
-    constructor(secretKey) {
-        this.secretKey = secretKey
-    }
-    parseCookies(req) {
-        const raw = req?.headers?.cookie || ''
-        return Object.fromEntries(raw.split('; ').map(cookie => cookie.split('=')))
-    }
-    sign(data){}
-}
