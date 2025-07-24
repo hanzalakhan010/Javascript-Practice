@@ -3,6 +3,7 @@ import { createStudent, getAllStudents, getStudentById, searchStudentByName, upd
 import { getAnalytics } from './analytics.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import JWT from '../miniExpress/JWT.js'
 const app = express()
 
 
@@ -12,14 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 app.use(express.static(path.join(__dirname, 'assets')))
+const jwt = new JWT('superSecretKey')
 
+// let loggedIn = false
 
-let loggedIn = false
-
-function checkLogin(req, res, next) {
-    if (!loggedIn) return res.redirect('/login')
-    next()
-}
 
 function checkGuest(req, res, next) {
     if (loggedIn) return res.redirect('/')
@@ -27,24 +24,24 @@ function checkGuest(req, res, next) {
 }
 
 
-app.get('/', checkLogin, (req, res) => {
+app.get('/', jwt.jwtProtetectedUpdated, (req, res) => {
     res.render('dashboard', { 'analytics': getAnalytics() })
 })
 
-app.get('/students', checkLogin, (req, res) => {
+app.get('/students', jwt.jwtProtetectedUpdated, (req, res) => {
     res.render('allStudents', { students: req.query?.search ? searchStudentByName(req.query.search) : getAllStudents(),search:req.query?.search })
 })
 
-app.post('/students', checkLogin, (req, res) => {
+app.post('/students', jwt.jwtProtetectedUpdated, (req, res) => {
     const id = createStudent(req.body)
     res.redirect(`/student/${id}`)
 })
 
-app.get('/editStudent/:id', checkLogin, (req, res) => {
+app.get('/editStudent/:id', jwt.jwtProtetectedUpdated, (req, res) => {
     const student = getStudentById(req?.params?.id)
     res.render('editStudent', { student })
 })
-app.post('/editStudent/:id', checkLogin, (req, res) => {
+app.post('/editStudent/:id', jwt.jwtProtetectedUpdated, (req, res) => {
     const student_id = req?.params?.id
     if (student_id) {
         if (updateStudentById(student_id, req.body)) {
@@ -58,7 +55,7 @@ app.post('/editStudent/:id', checkLogin, (req, res) => {
         res.send('NOT FOUND')
     }
 })
-app.get('/student/:id', checkLogin, (req, res) => {
+app.get('/student/:id', jwt.jwtProtetectedUpdated, (req, res) => {
     const student = getStudentById(req?.params?.id)
     if (student) {
         res.render('studentProfile', { student })
@@ -66,7 +63,7 @@ app.get('/student/:id', checkLogin, (req, res) => {
         res.send('NOT FOUND')
     }
 })
-app.get('/students/new', checkLogin, (req, res) => {
+app.get('/students/new', jwt.jwtProtetectedUpdated, (req, res) => {
     res.render('newStudent')
 })
 

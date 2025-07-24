@@ -1,11 +1,11 @@
 
 import crypto from 'crypto'
-import { copyFileSync } from 'fs'
 
 export default class JWT {
     constructor(secretKey) {
         this.secretKey = secretKey
         this.jwtProtetected = this.jwtProtetected.bind(this)
+        this.jwtProtetectedUpdated = this.jwtProtetectedUpdated.bind(this)
     }
     #parseCookies(req) {
         const raw = req?.headers?.cookie || ''
@@ -61,7 +61,14 @@ export default class JWT {
         const userIdentity = this.verifyJWT(cookies['jwtToken'])
         if (!userIdentity) return res.writeHead(401).end('Unauthorized')
         req.user = userIdentity
-
+    }
+    jwtProtetectedUpdated(req, res, next) {
+        const cookies = this.#parseCookies(req)
+        if (!cookies?.['jwtToken']) return res.status(401).send('Unauthorized1')
+        const userIdentity = this.verifyJWT(cookies['jwtToken'])
+        if (!userIdentity) return res.status(401).send('Unauthorized2')
+        req.user = userIdentity
+        next()
     }
     verifyJWT(token) {
         const [headerB64, payloadB64, signature] = token.split('.');
